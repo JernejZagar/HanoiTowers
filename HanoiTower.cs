@@ -36,17 +36,19 @@ namespace HanoiTower
 
         }
 
-        HashSet<string> povezave = new HashSet<string>() {"01", "10", "02", "20", "03", "30"};
+        HashSet<string> povezave = new HashSet<string>() {"01", "10", "02", "20", "03", "30", "12", "21", "23", "32", "13", "31"};
+
 
         public override void MakeMove(byte[] state)
         {
             List<int> seznamPredhodnihPozicij = new List<int>();
             List<int> seznamTrenutnihPozicij = new List<int>() {ConvertNumbers.TetraToDecimal(state)};
             List<int> seznamNovihPozicij = new List<int>();
-            //byte[] endPosition = ConvertNumbers.StartEndPosition(this.Final, this.Discs);
-            //Console.WriteLine($"Končna pozicija: {String.Join(",", endPosition)}");
+            byte[] startPosition = ConvertNumbers.StartEndPosition(this.Start, this.Discs);
+            Console.WriteLine($"Začetna pozicija: {String.Join(",", startPosition)}");
 
             int steviloPonovitev = 0;
+            bool status = true;
             while (true)
             {
                 foreach (int pozicija in seznamTrenutnihPozicij)
@@ -60,7 +62,7 @@ namespace HanoiTower
                         // Ker gremo od leve proti desni bomo vedno premaknili zgornji disk, kar je pravilno.
                         if (!zePremaknjeniStolpi.Contains(pozicijaByteArray[i]))
                         {
-                            HashSet<byte> mozniStolpi = new HashSet<byte> { 0, 1,2,3 };
+                            HashSet<byte> mozniStolpi = new HashSet<byte> { 0, 1, 2, 3};
                             for (int j = 0; j <= i; j++)
                             {
                                 mozniStolpi.Remove(pozicijaByteArray[j]);
@@ -79,13 +81,20 @@ namespace HanoiTower
 
                                 novaPozicija[i] = x;
                                 int novaPozicijaInt = ConvertNumbers.TetraToDecimal(novaPozicija);
-
-                                if (!seznamPredhodnihPozicij.Contains(novaPozicijaInt) & povezave.Contains(preveriPovezavo))
-                                {
-                                    //Console.WriteLine($"Nova pozicija: {String.Join(",", novaPozicija)}");
-                                    seznamNovihPozicij.Add(novaPozicijaInt);
-                                    zePremaknjeniStolpi.Add(pozicijaByteArray[i]);
-                                }
+                                //if (novaPozicija != ConvertNumbers.StartEndPosition(this.Final, this.Discs)){
+                                    if (!seznamPredhodnihPozicij.Contains(novaPozicijaInt) & !seznamNovihPozicij.Contains(novaPozicijaInt) &
+                                        !seznamTrenutnihPozicij.Contains(novaPozicijaInt) & povezave.Contains(preveriPovezavo) )
+                                    {
+                                        //Console.WriteLine($"Nova pozicija: {String.Join(",", novaPozicija)}");
+                                        seznamNovihPozicij.Add(novaPozicijaInt);
+                                        zePremaknjeniStolpi.Add(pozicijaByteArray[i]);
+                                    }
+                                //}
+                                //else
+                                //{
+                                //    Console.WriteLine($"Našli smo rešitrev: {novaPozicija}");
+                                //    status = false;
+                                //}
                             }
                         }
                     }
