@@ -9,7 +9,7 @@ namespace HanoiTower
             //Console.Clear();
             Console.WriteLine("Hello World!");
 
-            Hanoi_K4 hanoiK4 = new Hanoi_K4(5, 4, 1, 4);
+            Hanoi_K4 hanoiK4 = new Hanoi_K4(5, 4, 0, 1);
 
 
             //Metode za konvertiranje tipov števil.
@@ -20,10 +20,23 @@ namespace HanoiTower
             //Console.WriteLine(String.Join(",", stanje));
             //byte[] stanje2 = ConvertNumbers.StartEndPosition(1, 10);
             //Console.WriteLine(String.Join(",", stanje2));
+
             Console.WriteLine("Začetek");
-            byte[] stanje = new byte[] { 1, 0, 0, 0, 0 };
+            DateTime dtStart = DateTime.Now;
+
+            //byte[] stanje = ConvertNumbers.StartEndPosition(hanoiK4.Start, hanoiK4.Discs);
+            byte[] stanje = new byte[] { 0, 0, 0, 0 ,0 };
             hanoiK4.MakeMove(stanje);
+
+            DateTime dtEnd = DateTime.Now;
             Console.WriteLine("Konec");
+            Console.WriteLine($"Čas izvajanja= {(dtEnd-dtStart).TotalSeconds}");
+
+
+
+
+            //long mem = GC.GetTotalMemory(false);
+            //Console.WriteLine($"Max memory= {mem}");
         }
     }
 }

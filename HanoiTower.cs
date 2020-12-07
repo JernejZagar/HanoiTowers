@@ -36,12 +36,17 @@ namespace HanoiTower
 
         }
 
+        HashSet<string> povezave = new HashSet<string>() {"01", "10", "02", "20", "03", "30"};
+
         public override void MakeMove(byte[] state)
         {
             List<int> seznamPredhodnihPozicij = new List<int>();
             List<int> seznamTrenutnihPozicij = new List<int>() {ConvertNumbers.TetraToDecimal(state)};
             List<int> seznamNovihPozicij = new List<int>();
+            //byte[] endPosition = ConvertNumbers.StartEndPosition(this.Final, this.Discs);
+            //Console.WriteLine($"Končna pozicija: {String.Join(",", endPosition)}");
 
+            int steviloPonovitev = 0;
             while (true)
             {
                 foreach (int pozicija in seznamTrenutnihPozicij)
@@ -55,7 +60,7 @@ namespace HanoiTower
                         // Ker gremo od leve proti desni bomo vedno premaknili zgornji disk, kar je pravilno.
                         if (!zePremaknjeniStolpi.Contains(pozicijaByteArray[i]))
                         {
-                            HashSet<byte> mozniStolpi = new HashSet<byte> { 0, 1, 2, 3 };
+                            HashSet<byte> mozniStolpi = new HashSet<byte> { 0, 1,2,3 };
                             for (int j = 0; j <= i; j++)
                             {
                                 mozniStolpi.Remove(pozicijaByteArray[j]);
@@ -66,60 +71,41 @@ namespace HanoiTower
                                 // Zaradi referenčnega tipa uporabim prvotno pozicijo iz tipa int.
                                 // Zato, da se ob kreiranju nove pozicije ne spremeni prvotna.
                                 byte[] novaPozicija = ConvertNumbers.DecimalToTetra(pozicija, this.Discs);
+
+                                // s tem podatkov v if-u spodaj preverimo ali obstaja povezava med stolpoma.
+                                byte y = novaPozicija[i];
+                                string preveriPovezavo = x.ToString() + y.ToString();
+                                //Console.WriteLine($"Preveri povezavo: {preveriPovezavo}");
+
                                 novaPozicija[i] = x;
                                 int novaPozicijaInt = ConvertNumbers.TetraToDecimal(novaPozicija);
-                                if (!seznamPredhodnihPozicij.Contains(novaPozicijaInt))
+
+                                if (!seznamPredhodnihPozicij.Contains(novaPozicijaInt) & povezave.Contains(preveriPovezavo))
                                 {
-                                    Console.WriteLine($"Nova pozicija: {String.Join(",", novaPozicija)}");
+                                    //Console.WriteLine($"Nova pozicija: {String.Join(",", novaPozicija)}");
                                     seznamNovihPozicij.Add(novaPozicijaInt);
                                     zePremaknjeniStolpi.Add(pozicijaByteArray[i]);
                                 }
                             }
                         }
                     }
+                    //Console.WriteLine("------");
                 }
-                Console.WriteLine($"Predhodne pozicije: {String.Join(",", seznamPredhodnihPozicij)}");
-                Console.WriteLine($"Trenutne pozicije: {String.Join(",", seznamTrenutnihPozicij)}");
-                Console.WriteLine($"Nove pozicije: {String.Join(",", seznamNovihPozicij)}");
-                seznamPredhodnihPozicij = seznamTrenutnihPozicij;
-                seznamTrenutnihPozicij = seznamNovihPozicij;
+                //Console.WriteLine($"Predhodne pozicije: {String.Join(",", seznamPredhodnihPozicij)}");
+                //Console.WriteLine($"Trenutne pozicije: {String.Join(",", seznamTrenutnihPozicij)}");
+                //Console.WriteLine($"Nove pozicije: {String.Join(",", seznamNovihPozicij)}");
+                seznamPredhodnihPozicij = new List<int>(seznamTrenutnihPozicij);
+                seznamTrenutnihPozicij = new List<int>(seznamNovihPozicij);
                 seznamNovihPozicij.Clear();
+                steviloPonovitev += 1;
+                Console.WriteLine($"Stevilo ponovitev: {steviloPonovitev}");
+
             }
 
 
 
 
-            
 
-
-
-
-
-
-
-
-
-
-
-            /*
-            byte first = state[0];
-            
-            byte[] mozniStolpi = new byte[] { 0, 1, 2, 3 };
-            foreach(byte x in mozniStolpi)
-            {
-                //Console.WriteLine($"Prvotni: {String.Join(",", state)}");
-                //Console.WriteLine($"Prvotni integer: {first}");
-                if (first != x)
-                {
-                    state[0] = x;
-                    seznamNovihPozicij.Add(state);
-                    //Console.WriteLine($"Dodani: {String.Join(",", stateAppended)}");
-                }
-                
-            }
-
-            //throw new NotImplementedException();
-            */
         }
     }
 }

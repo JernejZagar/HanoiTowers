@@ -1,0 +1,12 @@
+/Users/jernej-pc/Documents/FIŠ/Programiranje/HanoiTower/bin/Debug/netcoreapp3.1/HanoiTower.deps.json
+/Users/jernej-pc/Documents/FIŠ/Programiranje/HanoiTower/bin/Debug/netcoreapp3.1/HanoiTower.runtimeconfig.json
+/Users/jernej-pc/Documents/FIŠ/Programiranje/HanoiTower/bin/Debug/netcoreapp3.1/HanoiTower.runtimeconfig.dev.json
+/Users/jernej-pc/Documents/FIŠ/Programiranje/HanoiTower/bin/Debug/netcoreapp3.1/HanoiTower.dll
+/Users/jernej-pc/Documents/FIŠ/Programiranje/HanoiTower/bin/Debug/netcoreapp3.1/HanoiTower.pdb
+/Users/jernej-pc/Documents/FIŠ/Programiranje/HanoiTower/obj/Debug/netcoreapp3.1/HanoiTower.csprojAssemblyReference.cache
+/Users/jernej-pc/Documents/FIŠ/Programiranje/HanoiTower/obj/Debug/netcoreapp3.1/HanoiTower.AssemblyInfoInputs.cache
+/Users/jernej-pc/Documents/FIŠ/Programiranje/HanoiTower/obj/Debug/netcoreapp3.1/HanoiTower.AssemblyInfo.cs
+/Users/jernej-pc/Documents/FIŠ/Programiranje/HanoiTower/obj/Debug/netcoreapp3.1/HanoiTower.csproj.CoreCompileInputs.cache
+/Users/jernej-pc/Documents/FIŠ/Programiranje/HanoiTower/obj/Debug/netcoreapp3.1/HanoiTower.dll
+/Users/jernej-pc/Documents/FIŠ/Programiranje/HanoiTower/obj/Debug/netcoreapp3.1/HanoiTower.pdb
+/Users/jernej-pc/Documents/FIŠ/Programiranje/HanoiTower/obj/Debug/netcoreapp3.1/HanoiTower.genruntimeconfig.cache
