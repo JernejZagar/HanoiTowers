@@ -1,18 +1,16 @@
 ﻿<Properties StartupConfiguration="{C31657A1-B24F-486F-AAE4-050C4310567B}|Default">
   <MonoDevelop.Ide.ItemProperties.HanoiTower PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../SeminarskaNaloga/HanoiTowers/HanoiTower.cs">
     <Files>
-      <File FileName="Program.cs" Line="12" Column="48" />
-      <File FileName="HanoiTower.cs" />
-      <File FileName="ConvertNumbers.cs" />
+      <File FileName="../SeminarskaNaloga/HanoiTowers/Program.cs" Line="43" Column="1" />
+      <File FileName="Program.cs" />
+      <File FileName="../SeminarskaNaloga/HanoiTowers/HanoiTower.cs" Line="10" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="HanoiTower" expanded="True">
-            <Node name="HanoiTower" expanded="True">
-              <Node name="Program.cs" selected="True" />
-            </Node>
+          <Node name="HanoiTower" expanded="True" selected="True">
+            <Node name="HanoiTower" expanded="True" />
           </Node>
         </State>
       </Pad>
