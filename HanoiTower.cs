@@ -38,18 +38,21 @@ namespace HanoiTower
 
         HashSet<string> povezave = new HashSet<string>() {"01", "10", "02", "20", "03", "30", "12", "21", "23", "32", "13", "31"};
 
+        //HashSet<string> povezave = new HashSet<string>() { "01", "10", "02", "20", "03", "30", "12", "21", "23", "32", "13", "31" };
 
         public override void MakeMove(byte[] state)
         {
             List<int> seznamPredhodnihPozicij = new List<int>();
             List<int> seznamTrenutnihPozicij = new List<int>() {ConvertNumbers.TetraToDecimal(state)};
             List<int> seznamNovihPozicij = new List<int>();
-            byte[] startPosition = ConvertNumbers.StartEndPosition(this.Start, this.Discs);
-            Console.WriteLine($"Začetna pozicija: {String.Join(",", startPosition)}");
+
+            byte[] startPosition = ConvertNumbers.SetPosition(this.Start, this.Discs);
+            byte[] final = ConvertNumbers.SetPosition(this.Final, this.Discs);
+            string endPosition = string.Join(",", final);
 
             int steviloPonovitev = 0;
             bool status = true;
-            while (true)
+            while (status)
             {
                 foreach (int pozicija in seznamTrenutnihPozicij)
                 {
@@ -81,40 +84,36 @@ namespace HanoiTower
 
                                 novaPozicija[i] = x;
                                 int novaPozicijaInt = ConvertNumbers.TetraToDecimal(novaPozicija);
-                                //if (novaPozicija != ConvertNumbers.StartEndPosition(this.Final, this.Discs)){
-                                    if (!seznamPredhodnihPozicij.Contains(novaPozicijaInt) & !seznamNovihPozicij.Contains(novaPozicijaInt) &
-                                        !seznamTrenutnihPozicij.Contains(novaPozicijaInt) & povezave.Contains(preveriPovezavo) )
+                                string possibleFinal = string.Join(",", novaPozicija);
+
+                                if (!seznamPredhodnihPozicij.Contains(novaPozicijaInt) & !seznamNovihPozicij.Contains(novaPozicijaInt) &
+                                    !seznamTrenutnihPozicij.Contains(novaPozicijaInt) & povezave.Contains(preveriPovezavo) )
+                                {
+                                    if (possibleFinal == endPosition)
+                                    {
+                                        status = false;
+                                        Console.WriteLine($"Našli smo rešitev: {String.Join(",", novaPozicija)}");
+                                        break;
+
+                                    }
+                                    else
                                     {
                                         //Console.WriteLine($"Nova pozicija: {String.Join(",", novaPozicija)}");
                                         seznamNovihPozicij.Add(novaPozicijaInt);
                                         zePremaknjeniStolpi.Add(pozicijaByteArray[i]);
                                     }
-                                //}
-                                //else
-                                //{
-                                //    Console.WriteLine($"Našli smo rešitrev: {novaPozicija}");
-                                //    status = false;
-                                //}
+                                }
                             }
                         }
                     }
                     //Console.WriteLine("------");
                 }
-                //Console.WriteLine($"Predhodne pozicije: {String.Join(",", seznamPredhodnihPozicij)}");
-                //Console.WriteLine($"Trenutne pozicije: {String.Join(",", seznamTrenutnihPozicij)}");
-                //Console.WriteLine($"Nove pozicije: {String.Join(",", seznamNovihPozicij)}");
                 seznamPredhodnihPozicij = new List<int>(seznamTrenutnihPozicij);
                 seznamTrenutnihPozicij = new List<int>(seznamNovihPozicij);
                 seznamNovihPozicij.Clear();
                 steviloPonovitev += 1;
                 Console.WriteLine($"Stevilo ponovitev: {steviloPonovitev}");
-
             }
-
-
-
-
-
         }
     }
 }

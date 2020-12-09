@@ -9,7 +9,7 @@ namespace HanoiTower
             //Console.Clear();
             Console.WriteLine("Hello World!");
 
-            Hanoi_K4 hanoiK4 = new Hanoi_K4(15, 4, 0, 1);
+            Hanoi_K4 hanoiK4 = new Hanoi_K4(7, 4, 0, 3);
 
 
             //Metode za konvertiranje tipov števil.
@@ -24,7 +24,7 @@ namespace HanoiTower
             Console.WriteLine("Začetek");
             DateTime dtStart = DateTime.Now;
 
-            byte[] stanje = ConvertNumbers.StartEndPosition(hanoiK4.Start, hanoiK4.Discs);
+            byte[] stanje = ConvertNumbers.SetPosition(hanoiK4.Start, hanoiK4.Discs);
             //byte[] stanje = new byte[] { 0, 0, 0, 0 ,0 };
             hanoiK4.MakeMove(stanje);
 

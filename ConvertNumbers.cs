@@ -49,7 +49,7 @@ namespace HanoiTower
             return stanje;
         }
 
-        public static byte[] StartEndPosition(byte start, int discs)
+        public static byte[] SetPosition(byte start, int discs)
         {
             byte[] startPosition = new byte[discs];
             int i = 0;
