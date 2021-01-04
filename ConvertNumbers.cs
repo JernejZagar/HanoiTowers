@@ -20,15 +20,17 @@ namespace HanoiTower
 
         }
 
-        
+
         public static int TetraToDecimal(byte[] positionByteList)
         {
             int decimalNumber = 0;
             int len = positionByteList.Length;
-            for (int i = 0; i<len; i++)
-            {
-                decimalNumber += positionByteList[i] * Potenca(4, len - i -1);
+            int factor = 1;
 
+            for (int i = len-1; i >= 0; i--)
+            {
+                decimalNumber += positionByteList[i] * factor;
+                factor = factor * 4;
             }
             return decimalNumber;
         }
@@ -49,13 +51,13 @@ namespace HanoiTower
             return stanje;
         }
 
-        public static byte[] SetPosition(byte start, int discs)
+        public static byte[] SetPosition(byte position, int discs)
         {
             byte[] startPosition = new byte[discs];
             int i = 0;
             while (discs > 0)
             {
-                startPosition[i] = start;
+                startPosition[i] = position;
                 discs--;
                 i++;
             }

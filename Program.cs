@@ -6,37 +6,46 @@ namespace HanoiTower
     {
         static void Main(string[] args)
         {
-            //Console.Clear();
-            Console.WriteLine("Hello World!");
-
-            Hanoi_K4 hanoiK4 = new Hanoi_K4(7, 4, 0, 3);
+            Console.WriteLine("Problem hanojskih stolpov - Jernej Žagar");
 
 
-            //Metode za konvertiranje tipov števil.
-            //Console.WriteLine(ConvertNumbers.Potenca(-2, 2));
-            //byte[] stanje = new byte[] {3, 1, 3, 0, 1 };
-            //Console.WriteLine(ConvertNumbers.TetraToDecimal(stanje));
-            //byte[] stanje = ConvertNumbers.DecimalToTetra(881,5);
-            //Console.WriteLine(String.Join(",", stanje));
-            //byte[] stanje2 = ConvertNumbers.StartEndPosition(1, 10);
-            //Console.WriteLine(String.Join(",", stanje2));
+            Console.WriteLine();
+            byte i = 1;
+            foreach (string stolp in Enum.GetNames(typeof(Tower)))
+            {
+                Console.WriteLine("     " + i + "   " + stolp);
+                i++;
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Izberi številko problema in pritisni Enter.");
+            string izbira = Console.ReadLine();
+
+            Console.WriteLine("Izberi število diskov in pritisni Enter.");
+            string stDiskov = Console.ReadLine();
+            int discs = Convert.ToInt32(stDiskov);
+
+            Console.WriteLine("Izberi začetni stolp in pritisni Enter.");
+            string startPeg = Console.ReadLine();
+            byte start = Convert.ToByte(startPeg);
+
+            Console.WriteLine("Izberi končni stolp in pritisni Enter.");
+            string endPeg = Console.ReadLine();
+            byte final = Convert.ToByte(endPeg);
+
+            HanoiTower vrstaStolpa = HanoiTowerFactory.GetHanoiTower(izbira, discs, start, final);
+            byte[] zacetnoStanje = ConvertNumbers.SetPosition(vrstaStolpa.Start, vrstaStolpa.Discs);
+
 
             Console.WriteLine("Začetek");
             DateTime dtStart = DateTime.Now;
 
-            byte[] stanje = ConvertNumbers.SetPosition(hanoiK4.Start, hanoiK4.Discs);
-            //byte[] stanje = new byte[] { 0, 0, 0, 0 ,0 };
-            hanoiK4.MakeMove(stanje);
+            vrstaStolpa.DolzinaNajkrajsePoti(zacetnoStanje);
 
             DateTime dtEnd = DateTime.Now;
             Console.WriteLine("Konec");
-            Console.WriteLine($"Čas izvajanja= {(dtEnd-dtStart).TotalSeconds}");
-
-            //byte[] test = ConvertNumbers.StartEndPosition(0, 5);
-            //Console.WriteLine($"Test startEnd = {String.Join(",", stanje)}");
-
-            //long mem = GC.GetTotalMemory(false);
-            //Console.WriteLine($"Max memory= {mem}");
+            Console.WriteLine($"Čas izvajanja= {(dtEnd - dtStart).TotalSeconds}");
+         
         }
     }
 }
