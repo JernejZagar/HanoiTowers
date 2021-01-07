@@ -170,16 +170,7 @@ namespace HanoiTower
                 //Console.WriteLine($"Stevilo ponovitev: {steviloPonovitev}");
             }
             Console.WriteLine($"Stevilo ponovitev: {steviloPonovitev}");
-            Console.WriteLine($"Max memory = {mem}");
-            //test:
-            //    Console.WriteLine($"Stevilo ponovitev: {steviloPonovitev + 1}");
-            //    long tmpMem2 = GC.GetTotalMemory(false);
-            //    if (tmpMem2 > mem)
-            //    {
-            //        mem = tmpMem2;
-            //    }
-            //    Console.WriteLine($"Max memory = {mem}");
-            //Console.WriteLine($"Max memory = {mem / ConvertNumbers.Potenca(2, 40)} GB, oziroma {mem / ConvertNumbers.Potenca(2, 40) / 16} % pomnilnika");
+            Console.WriteLine($"Max memory = {mem / 1000000} MB");
         }
     }
 

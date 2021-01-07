@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{C31657A1-B24F-486F-AAE4-050C4310567B}|Default">
   <MonoDevelop.Ide.ItemProperties.HanoiTower PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HanoiTower.cs">
     <Files>
       <File FileName="Program.cs" Line="17" Column="21" />
-      <File FileName="HanoiTower.cs" />
+      <File FileName="HanoiTower.cs" Line="174" Column="1" />
       <File FileName="ConvertNumbers.cs" />
     </Files>
     <Pads>
@@ -11,7 +11,7 @@
         <State name="__root__">
           <Node name="HanoiTower" expanded="True">
             <Node name="HanoiTower" expanded="True">
-              <Node name="Program.cs" selected="True" />
+              <Node name="HanoiTower.cs" selected="True" />
             </Node>
           </Node>
         </State>
