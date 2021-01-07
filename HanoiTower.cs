@@ -93,7 +93,7 @@ namespace HanoiTower
             bool status = true;
             while (status)
             {
-                Parallel.ForEach(seznamTrenutnihPozicij, (pozicija, state, options) => 
+                Parallel.ForEach(seznamTrenutnihPozicij, (pozicija, state) => 
                 //foreach (int pozicija in seznamTrenutnihPozicij)
                 {
                     byte[] pozicijaByteArray = ConvertNumbers.DecimalToTetra(pozicija, this.Discs);
@@ -123,8 +123,7 @@ namespace HanoiTower
                                 novaPozicija[i] = stolpX;
                                 int novaPozicijaInt = ConvertNumbers.TetraToDecimal(novaPozicija);
 
-                                if (!seznamPredhodnihPozicij.Contains(novaPozicijaInt) & !seznamNovihPozicij.Contains(novaPozicijaInt) &
-                                    !seznamTrenutnihPozicij.Contains(novaPozicijaInt) & this.Povezave.Contains(preveriPovezavo))
+                                if (!seznamPredhodnihPozicij.Contains(novaPozicijaInt) & this.Povezave.Contains(preveriPovezavo))
                                 {
                                     if (novaPozicijaInt == koncnaPozicija)
                                     {
